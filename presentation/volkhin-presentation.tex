@@ -1,0 +1,202 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass{beamer}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usetheme{Warsaw}
+\usepackage{graphicx}
+\usepackage[english,russian]{babel}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{pgf}
+\usepackage[absolute,overlay]{textpos}
+
+\title{Влияние микротрубочек на скорость образования стрессовых гранул}
+\author{Артем Вольхин}
+\institute{МФТИ}
+
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}{Содержание}
+%\tableofcontents
+%\end{frame}
+
+
+\section{Стрессовые гранулы}
+\begin{frame}{Стрессовые гранулы}
+\begin{columns}
+	\column{0.35\textwidth}
+	\begin{figure}
+	\pgfimage[width=1.1\columnwidth]{../pics/stressgranules}
+	\end{figure}
+
+	\column{0.75\textwidth}
+	\begin{itemize}
+	\item СГ~--- это скопления РНП в клетках
+	\item Размер от 20 нм до 5 мкм
+	\item Возникают при тепловом шоке, UV-облучении, окислительном стрессе
+	\item Время образования 10--20 минут
+	\item Двигаются в цитоплазме клетки
+	\item При столкновениях сливаются в большие гранулы
+	\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Микротрубочки}
+\begin{frame}{Микротрубочки}
+	\begin{columns}
+		\column{0.35\textwidth}
+		\begin{figure}
+		\pgfimage[width=\columnwidth]{../pics/microtubules}
+		\end{figure}
+
+		\column{0.75\textwidth}
+		\begin{itemize}
+		\item Микротрубочки~--- это белковые внутриклеточные структуры, входящие в состав цитоскелета
+		\item Полые цилиндры диаметром 25 нм
+		\item Образованы димерами тубулина
+		\item Полярны~--- сборка на одном конце, разборка~--- на другом
+		\item Перемещаются за счет элонгации
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+
+\section{Исследование стрессовых гранул}
+\begin{frame}{Основные факты}
+\begin{itemize}
+\item СГ двигаются хаотически, 10\% неподвижны, 10\% двигаются направленно
+\item Микрофилламенты препятствуют движению больших гранул
+\item Наблюдается быстрое движение, не диффузия
+\item СГ прикрепляются к микротрубочкам и двигаются вдоль них
+\item Без МТ движутся медленнее и для образования больших СГ требуется больше времени
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Постановка задачи}
+Основная задача при изучении СГ:
+\begin{itemize}
+\item Изучение числа, расположения и движения СГ
+\item Изучение взаимодействия со структурой микротрубочек
+%\item определение их скорости, типа движения и взаимодействия гранул между собой
+\end{itemize}
+
+Цель работы:
+\begin{itemize}
+\item Построить модель движения СГ и взаимодействия с микротрубочками
+\item Проверить на модели теоретические результаты
+\end{itemize}
+
+Почему выбрано моделирование?
+\end{frame}
+
+\begin{frame}{Теоретические оценки}
+Время между столкновениями РНП:
+\begin{equation}
+t_d \sim \frac{\eta}{K_B T C_{RNP}} \sim \frac{1}{4 \pi D r C_{RNP}}
+\end{equation}
+
+%Время до столкновения СГ с микротрубочкой:
+%\begin{equation}
+%t_m \sim \frac{1}{4 \pi D \left((a+r)^2 L \right)^{1/3} C_{RNP}}
+%\end{equation}
+
+{
+\small
+$\eta$~--- вязкость среды,
+$r$ и $C_{RNP}$~--- радиус и концентрация изначальных РНП частиц,
+$K_B T$~--- тепловая энергия,
+$df$~--- фрактальная размерность, равная $\sim1.8$,
+$a$~--- радиус микротрубочки,
+L~--- ее длина,
+$D$ и $D_s$~--- коэффициенты диффузии.
+}
+\end{frame}
+
+\begin{frame}{Теоретические оценки}
+Время до столкновения СГ с микротрубочкой:
+\begin{equation}
+t_m \sim \frac{1}{4 \pi D \left((a+r)^2 L \right)^{1/3} C_{RNP}}
+\end{equation}
+
+Время до столкновения с другой СГ на микротрубочке:
+\begin{equation}
+t_S \sim \frac{l_S^2}{D_S}
+\end{equation}
+
+{
+\small
+$r$ и $C_{RNP}$~--- радиус и концентрация изначальных РНП частиц, соответственно, $a$~--- радиус микротрубочки, L~--- ее длина, $D$ и $D_s$~--- коэффициенты диффузии, $l_S$~--- среднее расстояние между двумя частицами.
+}
+\end{frame}
+
+\section{Модель}
+\begin{frame}{Описание модели}
+%	\setlength\leftmargin{0pt}
+	\begin{columns}
+		\column{0.4\textwidth}
+		\begin{figure}
+		\pgfimage[width=1.05\columnwidth]{../pics/1371544764}
+		\end{figure}
+
+		\column{0.8\textwidth}
+		\begin{itemize}
+		\item Замкнутный кубический объем со СГ и микротрубочками
+		\item Броуновское движение частиц
+		\item Слияние СГ при столкновении
+		\item При столкновении с микротрубочками~--- присоединение и движение вдоль вдоль них
+		\item Плотность сети микрофилламентов~--- порог подвижности
+		\item 15 настраиваемых параметров
+		\item Инструменты для исследования зависимости модели от поднабора параметров
+		\end{itemize}
+	\end{columns}
+\end{frame}
+
+%\begin{frame}{Скриншоты}
+%\begin{figure}
+%\pgfimage[height=0.8\textheight]{../pics/1371544764-eps-converted-to}
+%\end{figure}
+%\end{frame}
+
+\section{Результаты}
+\begin{frame}{Частота столкновения между гранулами}
+\begin{figure}
+\pgfimage[width=0.5\textwidth]{../results/P2pCollisionTimeOnDiffusionExperiment}%
+\pgfimage[width=0.5\textwidth]{../results/P2pCollisionTimeOnConcetrationExperiment}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Частота столкновения СГ с микротрубочками}
+\begin{figure}
+\pgfimage[width=0.5\textwidth]{../results/P2mCollisionTimeOnLengthExperiment}%
+\pgfimage[width=0.5\textwidth]{../results/P2mCollisionTimeOnRadiusExperiment}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+\pgfimage[width=0.5\textwidth]{../results/CreatingLargeGranulesExperiment}%
+\pgfimage[width=0.5\textwidth]{../results/P2pCollisionTimeOnVolumeExperiment}
+\end{figure}
+Зависимость времени образования СГ от ее размера (слева) и зависимость времени между столкновения СГ от размера среды (справа).
+\end{frame}
+
+\begin{frame}{Планы на будущее}
+\begin{itemize}
+\item В дальнейшем планируется повышение достоверности модели (более реалистичная сеть микротрубочек, СГ с изначально разными параметрами и другое)
+\item Исследование и поиск новых зависимостей
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\centering\Huge
+Спасибо за внимание!
+\end{frame}
+
+\end{document}
