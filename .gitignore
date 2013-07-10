@@ -1,3 +1,5 @@
-./graphs/*
 .RData
 .RHistory
+output/*
+something
+articles
