@@ -1,0 +1,145 @@
+% !TEX encoding = UTF-8 Unicode
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[english,russian]{babel}
+\usepackage{array}
+\usepackage{theorem}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{floatflt}
+\usepackage{color}
+\usepackage[all]{xy}
+
+% page properties
+%\textheight=24cm
+%\textwidth=16cm
+%\oddsidemargin=0mm
+%\topmargin=1cm
+%\parindent=24pt
+%\tolerance=500
+%\footnotesep=3ex
+%\flushbottom
+%\tolerance=3000
+
+% theorems
+\theorembodyfont{\rmfamily\slshape}
+\theoremstyle{plain}
+\newtheorem{Theorem}{Теорема}[section]
+\newtheorem{Corollary}{Следствие}[Theorem]
+\newtheorem{Lemma}{Лемма}[section]
+\newtheorem{Def}{Определение}[section]
+\newtheorem{State}{Утверждение}[section]
+\newtheorem{Hypothesis}{Гипотеза}[section]
+\theorembodyfont{\rmfamily}
+\newtheorem{Example}{Пример}[section]
+\newtheorem{Heuristic}{Эвристика}
+\newtheorem{Remark}{Замечание}[section]
+% point after theorem name
+\gdef\th@plain{\normalfont
+    \def\@begintheorem##1##2{%
+        \item[\hskip\labelsep\theorem@headerfont ##1\ ##2.\;]}%
+    \def\@opargbegintheorem##1##2##3{%
+        \item[\hskip\labelsep\theorem@headerfont ##1\ ##2 (##3).\;]}%
+}
+
+\newenvironment{Proof}%
+    {\par\noindent{\bf Доказательство.\par\nopagebreak}}%
+    {\hfill$\scriptstyle\blacksquare$}
+
+% usefula commands for text
+\renewcommand{\em}{\it}  % \em and \emph - coursive
+\renewcommand\emph[1]{\textit{#1}}
+% operator on the next line
+\def\brop#1{#1\discretionary{}{\hbox{$#1$}}{}}
+
+% useful commands for math
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\newcommand{\ophi}{\phi}
+\renewcommand{\phi}{\varphi}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\emset}{\varnothing}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\wtil}{\widetilde}
+\newcommand{\kapa}{\varkappa}
+\newcommand{\argmin}{\mathop{\rm arg\,min}\limits}
+\newcommand{\argmax}{\mathop{\rm arg\,max}\limits}
+\newcommand{\sign}{\mathop{\rm sign}\limits}
+
+% gothic
+\def\RR{\mathbb{R}}
+\def\DD{\mathbb{D}}
+\def\fF{\mathfrak{F}}
+\def\fI{\mathfrak{I}}
+\def\fM{\mathfrak{M}}
+
+% probability theory
+\newcommand{\erf}{\myop{erf}}
+\newcommand{\Expect}{\mathsf{E}}
+\newcommand{\Var}{\mathsf{D}}
+\newcommand\Normal{\mathcal{N}}
+\newcommand{\cond}{\mspace{3mu}{|}\mspace{3mu}}
+
+% redefine colontituls
+\def\MYheadfoot{
+\renewcommand{\@oddfoot}{\hfil-- \thepage\ --\hfil}
+\renewcommand{\@oddhead}{}
+\renewcommand{\@evenfoot}{\hfil-- \thepage\ --\hfil}
+\renewcommand{\@evenhead}{}
+} \MYheadfoot
+
+% formulas numeration 
+\@addtoreset{equation}{section}
+\def\theequation{\thesection.\arabic{equation}}
+
+% paragraph style
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+    {5ex \@plus 1ex \@minus .2ex}%
+    {2.3ex \@plus.2ex}%
+    {\normalfont\Large\sffamily\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+    {5ex\@plus 1ex \@minus .2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\large\sffamily\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+    {5ex\@plus 1ex \@minus .2ex}%
+    {1.5ex \@plus .2ex}%
+    {\normalfont\normalsize\sffamily\bfseries}}
+
+% floating images
+\setcounter{topnumber}{9}
+\setcounter{totalnumber}{9}
+\renewcommand\topfraction{1.0}
+\renewcommand\textfraction{0.0}
+\renewcommand\floatpagefraction{0.01}
+\setlength\floatsep{2ex}
+\setlength\textfloatsep{2.5ex}
+\setlength\intextsep{2.5ex}
+\setlength\abovecaptionskip{2ex}
+
+% enumerate with parentheses
+\def\afterlabel#1{\renewcommand\labelenumi{\theenumi #1}}
+\def\aroundlabel#1#2{\renewcommand\labelenumi{#1\theenumi #2}}
+\newenvironment{enumerate*}
+{%
+    \begingroup
+    \renewcommand{\@listi}{
+        \topsep=\smallskipamount
+        \parsep=0pt
+        \parskip=0pt
+        \itemsep=0pt
+        \itemindent=0pt
+        \labelsep=1.5ex
+        \leftmargin=24pt
+        \rightmargin=0pt}
+    \begin{enumerate}%
+    \afterlabel)%
+}{%
+    \end{enumerate}%
+    \endgroup
+}
+
+% tables: a bit wider heading
+\newcommand{\hstrut}{\rule{0pt}{2.5ex}}
+\newcommand{\headline}{\hline\hstrut}
